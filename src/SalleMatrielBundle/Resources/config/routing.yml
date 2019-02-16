@@ -1,0 +1,6 @@
+salle_homepage:
+    path:     /salle
+    defaults: { _controller: SalleMatrielBundle:Default:salle }
+matriel_homepage:
+    path:     /materiel
+    defaults: { _controller: SalleMatrielBundle:Default:materiel }

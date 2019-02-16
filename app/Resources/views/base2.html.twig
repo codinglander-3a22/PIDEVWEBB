@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- For IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{% block title %} Cité de la Culture || TUNIS  {% endblock %}</title>
+
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('front/css/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('front/css/responsive.css') }}">
+
+        <!-- Favicon -->
+        <link rel="shortcut icon" href="{{ asset('front/images/favicon1.png') }}" type="image/x-icon">
+        <link rel="icon" href="{{ asset('front/images/favicon1.png') }}" type="image/x-icon">
+    {% endblock %}
+
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" >
+</head>
+<body>
+
+<div class="boxed_wrapper">
+
+
+    <!--Start Preloader -->
+    <div class="preloader"></div>
+    <!-- Main Header-->
+    <header class="main-header">
+        {% block header %}
+            <!--Header-Upper-->
+            <div class="header-upper">
+                <div class="container">
+                    <div class="clearfix">
+
+                        <div class="float-left logo-box">
+                            <div class="logo"><a href=""><img src="{{ asset('front/images/Cit-de-la-culture.png') }}" alt="" title=""></a></div>
+                        </div>
+
+                        <div class="nav-outer clearfix">
+
+                            <!-- Main Menu -->
+                            <nav class="main-menu navbar-expand-md">
+                                <div class="navbar-header">
+                                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </button>
+                                </div>
+
+                                <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
+                                    <ul class="navigation clearfix">
+                                        <li><a href="{{ path ('user_homepage') }}">Home</a></li>
+                                        <li class="dropdown"><a href="#">About</a>
+                                            <ul>
+                                                <li><a href="">About Us</a></li>
+                                                <li><a href="">Speakers</a></li>
+                                                <li><a href="">Speaker Details</a></li>
+                                                <li><a href="">Error Page</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown"><a href="#">Shedule</a>
+                                            <ul>
+                                                <li><a href="">Shedule</a></li>
+                                                <li><a href="">Shedule Details</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown"><a href="#">Sponsors</a>
+                                            <ul>
+                                                <li><a href="sponsor.html">Sponsors</a></li>
+                                                <li><a href="sponsor-details.html">Sponsors Details</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown"><a href="#">Blog</a>
+                                            <ul>
+                                                <li><a href="blog.html">Blog</a></li>
+                                                <li><a href="blog-single.html">Blog Details</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="">Contact us</a></li>
+
+                                    </ul>
+                                </div>
+
+                            </nav>
+
+                            <!--Button Box-->
+                            <div class="button-box">
+                                {% if not is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                                <li><a href="{{ path('fos_user_security_login') }}" class="theme-btn btn-style-one">Connexion</a>
+                                <a href="{{ path('fos_user_registration_register') }}" class="theme-btn btn-style-one" title="">s'inscrire</a></li>
+
+                                {% else %}
+                                    <li><a class="theme-btn btn-style-one" href="{{ path('fos_user_security_logout') }}" title="">se deconnecter</a></li>
+                                {% endif %}
+                            </div>
+
+                            <!--Search Box Outer-->
+                            <div class="search-box-outer">
+                                <div class="dropdown">
+                                    <button class="search-box-btn dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="fa fa-search"></span></button>
+                                    <ul class="dropdown-menu pull-right search-panel" aria-labelledby="dropdownMenu3">
+                                        <li class="panel-outer">
+                                            <div class="form-container">
+                                                <form method="post" action="http://html.tonatheme.com/2019/Wiscon/blog.html">
+                                                    <div class="form-group">
+                                                        <input type="search" name="field-name" value="" placeholder="Search Here" required>
+                                                        <button type="submit" class="search-btn"><span class="fa fa-search"></span></button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!--End Header Upper-->
+
+            <!--Sticky Header-->
+            <div class="sticky-header stricky">
+                <div class="container clearfix">
+                    <!--Logo-->
+                    <div class="logo float-left">
+                        <a href="index-2.html" class="img-responsive"><img src="{{ asset('front/images/Cit-de-la-culture.png')}}" alt="" title=""></a>
+                    </div>
+
+                    <!--Right Col-->
+                    <div class="right-col float-right">
+                        <!-- Main Menu -->
+                        <nav class="main-menu navbar-expand-md">
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+
+                            <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent1">
+                                <ul class="navigation clearfix">
+                                    <li class="current dropdown"><a href="{{ path ('user_homepage') }}">Home</a></li>
+                                    <li class="dropdown"><a href="#">About</a>
+                                        <ul>
+                                            <li><a href="about-us.html">About Us</a></li>
+                                            <li><a href="speakers.html">Speakers</a></li>
+                                            <li><a href="speakers-details.html">Speaker Details</a></li>
+                                            <li><a href="error-page.html">Error Page</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown"><a href="#">Shedule</a>
+                                        <ul>
+                                            <li><a href="shedule.html">Shedule</a></li>
+                                            <li><a href="shedule-details.html">Shedule Details</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown"><a href="#">Sponsors</a>
+                                        <ul>
+                                            <li><a href="sponsor.html">Sponsors</a></li>
+                                            <li><a href="sponsor-details.html">Sponsors Details</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown"><a href="#">Blog</a>
+                                        <ul>
+                                            <li><a href="blog.html">Blog</a></li>
+                                            <li><a href="blog-single.html">Blog Details</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="">Contact us</a></li>
+                                </ul>
+                            </div>
+                        </nav><!-- Main Menu End-->
+                    </div>
+
+                </div>
+            </div>
+            <!--End Sticky Header-->
+        {% endblock %}
+    </header>
+    <!--End Main Header -->
+
+
+    {% block body %}
+
+    {% endblock %}
+
+
+    <!--Contact Info-->
+    <section class="contact-info">
+        <div class="container">
+            <div class="info-area">
+                <div class="row">
+                    {% block contactinfo %}
+                    <div class="col-xl-4 col-md-6 col-sm-12">
+                        <div class="contact-info-item-one">
+                            <div class="icon-box">
+                                <i class="flaticon-placeholder"></i>
+                            </div>
+                            <div class="text">
+                                <p>184 Collins Street West <br>Victoria, United States, 8007</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-6 col-sm-12">
+                        <div class="contact-info-item-one">
+                            <div class="icon-box">
+                                <i class="flaticon-phone-call"></i>
+                            </div>
+                            <div class="text">
+                                <p>(1800) 123 4567 <br>(1800) 123 4568</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-6 col-sm-12">
+                        <div class="contact-info-item-one">
+                            <div class="icon-box">
+                                <i class="flaticon-e-mail-envelope"></i>
+                            </div>
+                            <div class="text">
+                                <p>
+                                    <a href="#">info@wiscon.com</a>
+                                    <a href="#">support@wiscon.com</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--End Contact Info-->
+
+    <!-- Main Footer-->
+    <footer class="main-footer" style="background: url({{ asset('front/images/background/footer.jpg') }});">
+        <div class="container">
+            <div class="footer-area text-center">
+            {% block navfooter %}
+                <div class="footer-logo">
+                    <figure>
+                        <a href="index-2.html"><img src="images/" alt=""></a>
+                    </figure>
+                </div>
+                <ul class="footer-menu">
+                    <li><a href="{{ path ('user_homepage') }}">Home</a></li>
+                    <li><a href="about-us.html">About</a></li>
+                    <li><a href="speakers.html">Speakers</a></li>
+                    <li><a href="#">Pages</a></li>
+                    <li><a href="shedule.html">Schedule</a></li>
+                    <li><a href="sponsor.html">Sponsors</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact-us.html">Contact</a></li>
+                </ul>
+            {% endblock %}
+            </div>
+        </div>
+    </footer>
+    <!--End Main Footer-->
+
+    <!--Footer Bottom Section-->
+    <section class="footer-bottom">
+        <div class="container">
+            {% block footer %}
+                <div class="copyright-text text-center">
+                    Copyright &copy; <a href="#">Wiscon</a> 2019. All Rights Reserved
+                </div>
+            {% endblock %}
+        </div>
+    </section>
+    <!--End Footer Bottom Section-->
+
+</div>
+    {% block javascripts %}
+        <script src="{{ asset('front/js/jquery.js') }}"></script>
+        <script src="{{ asset('front/js/popper.min.js') }}"></script>
+        <script src="{{ asset('front/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('front/js/jquery.fancybox.js') }}"></script>
+        <script src="{{ asset('front/js/owl.js') }}"></script>
+        <script src="{{ asset('front/js/wow.js') }}"></script>
+        <script src="{{ asset('front/js/jquery.countTo.js') }}"></script>
+        <script src="{{ asset('front/js/jquery.countdown.min.js') }}"></script>
+        <script src="{{ asset('front/js/appear.js') }}"></script>
+        <script src="{{ asset('front/js/jquery-ui.js') }}"></script>
+        <script src="{{ asset('front/js/isotope.js') }}"></script>
+        <script src="{{ asset('front/js/bxslider.js') }}"></script>
+        <script src="{{ asset('front/js/validate.js') }}"></script>
+
+        <script src="{{ asset('front/js/custom.js') }}"></script>
+
+        <!--Google Map-->
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBevTAR-V2fDy9gQsQn1xNHBPH2D36kck0"></script>
+        <script src="{{ asset('front/js/map-script.js') }}"></script>
+        <!--End Google Map APi-->
+
+
+    {% endblock %}
+</body>
+</html>

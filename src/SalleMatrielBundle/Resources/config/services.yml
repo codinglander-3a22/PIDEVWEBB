@@ -1,0 +1,4 @@
+services:
+#    salle_matriel.example:
+#        class: SalleMatrielBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
