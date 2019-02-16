@@ -1,3 +1,6 @@
 evenement_homepage:
     path:     /evenement
     defaults: { _controller: EvenementBundle:Default:gestionEvenement }
+type_evenement_ajout:
+    path:     /evenement/ajout
+    defaults: { _controller: EvenementBundle:TypeEvennement:ajout }

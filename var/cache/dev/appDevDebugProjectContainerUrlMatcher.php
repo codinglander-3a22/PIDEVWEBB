@@ -194,9 +194,17 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             return array (  '_controller' => 'UserBundle\\Controller\\DefaultController::indexadminAction',  '_route' => 'admin',);
         }
 
-        // evenement_homepage
-        if ('/evenement' === $pathinfo) {
-            return array (  '_controller' => 'EvenementBundle\\Controller\\DefaultController::gestionEvenementAction',  '_route' => 'evenement_homepage',);
+        if (0 === strpos($pathinfo, '/evenement')) {
+            // evenement_homepage
+            if ('/evenement' === $pathinfo) {
+                return array (  '_controller' => 'EvenementBundle\\Controller\\DefaultController::gestionEvenementAction',  '_route' => 'evenement_homepage',);
+            }
+
+            // type_evenement_ajout
+            if ('/evenement/ajout' === $pathinfo) {
+                return array (  '_controller' => 'EvenementBundle\\Controller\\TypeEvennementController::ajoutAction',  '_route' => 'type_evenement_ajout',);
+            }
+
         }
 
         // homepage
