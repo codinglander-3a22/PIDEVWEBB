@@ -1,0 +1,77 @@
+{% extends "base.html.twig"%}
+    {% block title %}
+        Gestion Evenement || ADMIN
+    {% endblock %}
+{% block profile %}
+    <img src="{{ user.image }}" class="user-image" alt="User Image">
+    <!-- hidden-xs hides the username on small devices so only the image appears. -->
+    <span class="hidden-xs">{{ user.nom }} {{ user.prenom }} </span>
+{% endblock %}
+{% block profile2 %}
+    <img src="{{ user.image }}" class="img-circle" alt="User Image">
+
+    <p>
+        {{ user.nom }} {{ user.prenom }}
+        <small>Member since {{ user.nom }} </small>
+    </p>
+{% endblock %}
+{% block profile3 %}
+    <div class="pull-left image">
+        <img src="{{ user.image }}" class="img-circle" alt="User Image">
+    </div>
+    <div class="pull-left info">
+        <p>{{ user.nom }} {{ user.prenom }}</p>
+        <!-- Status -->
+        <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+    </div>
+{% endblock %}
+
+{% block menu_bar %}
+    <li class="header">MENU</li>
+    <!-- Optionally, you can add icons to the links -->
+    <li><a href="{{ path('admin') }}"><i class="fa fa-link"></i> <span>Index</span></a></li>
+    <li class="active" ><a href="{{ path('evenement_homepage') }}"><i class="fa fa-link"></i> <span>Gestion des evénements</span></a></li>
+    <li><a href="{{ path('programme_homepage') }}"><i class="fa fa-link"></i> <span>Gestion des programmes </span></a></li>
+    <li class="treeview">
+        <a href="#"><i class="fa fa-link"></i> <span>Gestion des Salles <br> et  Matériels</span>
+            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+        </a>
+        <ul class="treeview-menu">
+            <li><a href="{{ path('salle_homepage') }}">Gestion des Salles</a></li>
+            <li><a href="{{ path('matriel_homepage') }}">Gestion des Matériels</a></li>
+        </ul>
+    </li>
+    <li class="treeview">
+        <a href="#"><i class="fa fa-link"></i> <span>Gestion des actualités <br>et publicités </span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+        </a>
+        <ul class="treeview-menu">
+            <li><a href="#">Gestion des actualités</a></li>
+            <li><a href="#">Gestion des publicités</a></li>
+        </ul>
+    </li>
+    <li class="treeview">
+        <a href="#"><i class="fa fa-link"></i> <span>Gestion des planning<br> et ventes</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+        </a>
+        <ul class="treeview-menu">
+            <li><a href="#">Link in level 2</a></li>
+            <li><a href="#">Link in level 2</a></li>
+        </ul>
+    </li>
+    <li><a href="{{ path('forum_homepage') }}"><i class="fa fa-link"></i><span>Forum </span></a></li>
+
+{% endblock %}
+
+{% block body %}
+
+    {{form(form)}}
+
+{% endblock %}
+

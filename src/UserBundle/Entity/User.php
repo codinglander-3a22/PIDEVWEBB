@@ -29,7 +29,7 @@ class User extends BaseUser
     private  $nom ;
 
     /**
-     * @ORM\Column(name="image", type="string" , length=255)
+     * @ORM\Column(name="image", type="string" , length=255 , )
      *
      */
     private  $image ;
