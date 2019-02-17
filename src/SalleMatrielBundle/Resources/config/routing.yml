@@ -4,3 +4,9 @@ salle_homepage:
 matriel_homepage:
     path:     /materiel
     defaults: { _controller: SalleMatrielBundle:Default:materiel }
+ajoutSalle:
+    path:     /ajoutSalle
+    defaults: { _controller: SalleMatrielBundle:Salle:ajoutSalle }
+ajoutReservation:
+    path:     /ajoutReservation
+    defaults: { _controller: SalleMatrielBundle:Reservation:ajoutReservation }

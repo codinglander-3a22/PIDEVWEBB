@@ -17,7 +17,7 @@ class appDevDebugProjectContainerUrlGenerator extends Symfony\Component\Routing\
         $this->context = $context;
         $this->logger = $logger;
         if (null === self::$declaredRoutes) {
-            self::$declaredRoutes = array(
+            self::$declaredRoutes = [
         '_wdt' => array (  0 =>   array (    0 => 'token',  ),  1 =>   array (    '_controller' => 'web_profiler.controller.profiler:toolbarAction',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'variable',      1 => '/',      2 => '[^/]++',      3 => 'token',    ),    1 =>     array (      0 => 'text',      1 => '/_wdt',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
         '_profiler_home' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'web_profiler.controller.profiler:homeAction',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/_profiler/',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
         '_profiler_search' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'web_profiler.controller.profiler:searchAction',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/_profiler/search',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
@@ -33,6 +33,8 @@ class appDevDebugProjectContainerUrlGenerator extends Symfony\Component\Routing\
         'forum_homepage' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'ForumBundle\\Controller\\DefaultController::indexAction',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/forum',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
         'salle_homepage' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'SalleMatrielBundle\\Controller\\DefaultController::salleAction',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/salle',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
         'matriel_homepage' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'SalleMatrielBundle\\Controller\\DefaultController::materielAction',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/materiel',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
+        'ajoutSalle' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'SalleMatrielBundle\\Controller\\SalleController::ajoutSalleAction',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/ajoutSalle',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
+        'ajoutReservation' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'SalleMatrielBundle\\Controller\\ReservationController::ajoutReservationAction',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/ajoutReservation',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
         'programme_homepage' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'ProgrammeBundle\\Controller\\DefaultController::indexAction',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/programme',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
         'user_homepage' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'UserBundle\\Controller\\DefaultController::indexAction',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
         'admin' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'UserBundle\\Controller\\DefaultController::indexadminAction',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/admin',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
@@ -52,11 +54,11 @@ class appDevDebugProjectContainerUrlGenerator extends Symfony\Component\Routing\
         'fos_user_resetting_check_email' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'fos_user.resetting.controller:checkEmailAction',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/resetting/check-email',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
         'fos_user_resetting_reset' => array (  0 =>   array (    0 => 'token',  ),  1 =>   array (    '_controller' => 'fos_user.resetting.controller:resetAction',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'variable',      1 => '/',      2 => '[^/]++',      3 => 'token',    ),    1 =>     array (      0 => 'text',      1 => '/resetting/reset',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
         'fos_user_change_password' => array (  0 =>   array (  ),  1 =>   array (    '_controller' => 'fos_user.change_password.controller:changePasswordAction',  ),  2 =>   array (  ),  3 =>   array (    0 =>     array (      0 => 'text',      1 => '/profile/change-password',    ),  ),  4 =>   array (  ),  5 =>   array (  ),),
-    );
+    ];
         }
     }
 
-    public function generate($name, $parameters = array(), $referenceType = self::ABSOLUTE_PATH)
+    public function generate($name, $parameters = [], $referenceType = self::ABSOLUTE_PATH)
     {
         if (!isset(self::$declaredRoutes[$name])) {
             throw new RouteNotFoundException(sprintf('Unable to generate a URL for the named route "%s" as such route does not exist.', $name));

@@ -45,6 +45,7 @@ class ComposerStaticInitd5ec9de6248d6b3d909987d8545a2d21
             'Sensio\\Bundle\\GeneratorBundle\\' => 30,
             'Sensio\\Bundle\\FrameworkExtraBundle\\' => 35,
             'Sensio\\Bundle\\DistributionBundle\\' => 33,
+            'SensioLabs\\Security\\' => 20,
         ),
         'P' => 
         array (
@@ -163,6 +164,10 @@ class ComposerStaticInitd5ec9de6248d6b3d909987d8545a2d21
         array (
             0 => __DIR__ . '/..' . '/sensio/distribution-bundle',
         ),
+        'SensioLabs\\Security\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/sensiolabs/security-checker/SensioLabs/Security',
+        ),
         'Psr\\SimpleCache\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/simple-cache/src',
@@ -239,13 +244,6 @@ class ComposerStaticInitd5ec9de6248d6b3d909987d8545a2d21
             'Twig_' => 
             array (
                 0 => __DIR__ . '/..' . '/twig/twig/lib',
-            ),
-        ),
-        'S' => 
-        array (
-            'SensioLabs\\Security' => 
-            array (
-                0 => __DIR__ . '/..' . '/sensiolabs/security-checker',
             ),
         ),
         'D' => 

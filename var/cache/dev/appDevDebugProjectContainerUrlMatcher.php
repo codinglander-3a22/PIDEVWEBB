@@ -17,7 +17,7 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
     public function match($rawPathinfo)
     {
-        $allow = array();
+        $allow = [];
         $pathinfo = rawurldecode($rawPathinfo);
         $trimmedPathinfo = rtrim($pathinfo, '/');
         $context = $this->context;
@@ -31,7 +31,7 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
         if (0 === strpos($pathinfo, '/_')) {
             // _wdt
             if (0 === strpos($pathinfo, '/_wdt') && preg_match('#^/_wdt/(?P<token>[^/]++)$#sD', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => '_wdt')), array (  '_controller' => 'web_profiler.controller.profiler:toolbarAction',));
+                return $this->mergeDefaults(array_replace($matches, ['_route' => '_wdt']), array (  '_controller' => 'web_profiler.controller.profiler:toolbarAction',));
             }
 
             if (0 === strpos($pathinfo, '/_profiler')) {
@@ -70,7 +70,7 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
                 // _profiler_search_results
                 if (preg_match('#^/_profiler/(?P<token>[^/]++)/search/results$#sD', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => '_profiler_search_results')), array (  '_controller' => 'web_profiler.controller.profiler:searchResultsAction',));
+                    return $this->mergeDefaults(array_replace($matches, ['_route' => '_profiler_search_results']), array (  '_controller' => 'web_profiler.controller.profiler:searchResultsAction',));
                 }
 
                 // _profiler_open_file
@@ -80,29 +80,29 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
                 // _profiler
                 if (preg_match('#^/_profiler/(?P<token>[^/]++)$#sD', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => '_profiler')), array (  '_controller' => 'web_profiler.controller.profiler:panelAction',));
+                    return $this->mergeDefaults(array_replace($matches, ['_route' => '_profiler']), array (  '_controller' => 'web_profiler.controller.profiler:panelAction',));
                 }
 
                 // _profiler_router
                 if (preg_match('#^/_profiler/(?P<token>[^/]++)/router$#sD', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => '_profiler_router')), array (  '_controller' => 'web_profiler.controller.router:panelAction',));
+                    return $this->mergeDefaults(array_replace($matches, ['_route' => '_profiler_router']), array (  '_controller' => 'web_profiler.controller.router:panelAction',));
                 }
 
                 // _profiler_exception
                 if (preg_match('#^/_profiler/(?P<token>[^/]++)/exception$#sD', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => '_profiler_exception')), array (  '_controller' => 'web_profiler.controller.exception:showAction',));
+                    return $this->mergeDefaults(array_replace($matches, ['_route' => '_profiler_exception']), array (  '_controller' => 'web_profiler.controller.exception:showAction',));
                 }
 
                 // _profiler_exception_css
                 if (preg_match('#^/_profiler/(?P<token>[^/]++)/exception\\.css$#sD', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => '_profiler_exception_css')), array (  '_controller' => 'web_profiler.controller.exception:cssAction',));
+                    return $this->mergeDefaults(array_replace($matches, ['_route' => '_profiler_exception_css']), array (  '_controller' => 'web_profiler.controller.exception:cssAction',));
                 }
 
             }
 
             // _twig_error_test
             if (0 === strpos($pathinfo, '/_error') && preg_match('#^/_error/(?P<code>\\d+)(?:\\.(?P<_format>[^/]++))?$#sD', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => '_twig_error_test')), array (  '_controller' => 'twig.controller.preview_error:previewErrorPageAction',  '_format' => 'html',));
+                return $this->mergeDefaults(array_replace($matches, ['_route' => '_twig_error_test']), array (  '_controller' => 'twig.controller.preview_error:previewErrorPageAction',  '_format' => 'html',));
             }
 
         }
@@ -122,6 +122,24 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             return array (  '_controller' => 'SalleMatrielBundle\\Controller\\DefaultController::materielAction',  '_route' => 'matriel_homepage',);
         }
 
+        if (0 === strpos($pathinfo, '/a')) {
+            // ajoutSalle
+            if ('/ajoutSalle' === $pathinfo) {
+                return array (  '_controller' => 'SalleMatrielBundle\\Controller\\SalleController::ajoutSalleAction',  '_route' => 'ajoutSalle',);
+            }
+
+            // ajoutReservation
+            if ('/ajoutReservation' === $pathinfo) {
+                return array (  '_controller' => 'SalleMatrielBundle\\Controller\\ReservationController::ajoutReservationAction',  '_route' => 'ajoutReservation',);
+            }
+
+            // admin
+            if ('/admin' === $pathinfo) {
+                return array (  '_controller' => 'UserBundle\\Controller\\DefaultController::indexadminAction',  '_route' => 'admin',);
+            }
+
+        }
+
         // programme_homepage
         if ('/programme' === $pathinfo) {
             return array (  '_controller' => 'ProgrammeBundle\\Controller\\DefaultController::indexAction',  '_route' => 'programme_homepage',);
@@ -139,8 +157,8 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                     return array_replace($ret, $this->redirect($rawPathinfo.'/', 'fos_user_profile_show'));
                 }
 
-                if (!in_array($canonicalMethod, array('GET'))) {
-                    $allow = array_merge($allow, array('GET'));
+                if (!in_array($canonicalMethod, ['GET'])) {
+                    $allow = array_merge($allow, ['GET']);
                     goto not_fos_user_profile_show;
                 }
 
@@ -151,8 +169,8 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             // fos_user_profile_edit
             if ('/profile/edit' === $pathinfo) {
                 $ret = array (  '_controller' => 'fos_user.profile.controller:editAction',  '_route' => 'fos_user_profile_edit',);
-                if (!in_array($canonicalMethod, array('GET', 'POST'))) {
-                    $allow = array_merge($allow, array('GET', 'POST'));
+                if (!in_array($canonicalMethod, ['GET', 'POST'])) {
+                    $allow = array_merge($allow, ['GET', 'POST']);
                     goto not_fos_user_profile_edit;
                 }
 
@@ -163,8 +181,8 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             // fos_user_change_password
             if ('/profile/change-password' === $pathinfo) {
                 $ret = array (  '_controller' => 'fos_user.change_password.controller:changePasswordAction',  '_route' => 'fos_user_change_password',);
-                if (!in_array($canonicalMethod, array('GET', 'POST'))) {
-                    $allow = array_merge($allow, array('GET', 'POST'));
+                if (!in_array($canonicalMethod, ['GET', 'POST'])) {
+                    $allow = array_merge($allow, ['GET', 'POST']);
                     goto not_fos_user_change_password;
                 }
 
@@ -188,11 +206,6 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             return $ret;
         }
         not_user_homepage:
-
-        // admin
-        if ('/admin' === $pathinfo) {
-            return array (  '_controller' => 'UserBundle\\Controller\\DefaultController::indexadminAction',  '_route' => 'admin',);
-        }
 
         // evenement_homepage
         if ('/evenement' === $pathinfo) {
@@ -218,8 +231,8 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             // fos_user_security_login
             if ('/login' === $pathinfo) {
                 $ret = array (  '_controller' => 'fos_user.security.controller:loginAction',  '_route' => 'fos_user_security_login',);
-                if (!in_array($canonicalMethod, array('GET', 'POST'))) {
-                    $allow = array_merge($allow, array('GET', 'POST'));
+                if (!in_array($canonicalMethod, ['GET', 'POST'])) {
+                    $allow = array_merge($allow, ['GET', 'POST']);
                     goto not_fos_user_security_login;
                 }
 
@@ -230,8 +243,8 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             // fos_user_security_check
             if ('/login_check' === $pathinfo) {
                 $ret = array (  '_controller' => 'fos_user.security.controller:checkAction',  '_route' => 'fos_user_security_check',);
-                if (!in_array($requestMethod, array('POST'))) {
-                    $allow = array_merge($allow, array('POST'));
+                if (!in_array($requestMethod, ['POST'])) {
+                    $allow = array_merge($allow, ['POST']);
                     goto not_fos_user_security_check;
                 }
 
@@ -244,8 +257,8 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
         // fos_user_security_logout
         if ('/logout' === $pathinfo) {
             $ret = array (  '_controller' => 'fos_user.security.controller:logoutAction',  '_route' => 'fos_user_security_logout',);
-            if (!in_array($canonicalMethod, array('GET', 'POST'))) {
-                $allow = array_merge($allow, array('GET', 'POST'));
+            if (!in_array($canonicalMethod, ['GET', 'POST'])) {
+                $allow = array_merge($allow, ['GET', 'POST']);
                 goto not_fos_user_security_logout;
             }
 
@@ -265,8 +278,8 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                     return array_replace($ret, $this->redirect($rawPathinfo.'/', 'fos_user_registration_register'));
                 }
 
-                if (!in_array($canonicalMethod, array('GET', 'POST'))) {
-                    $allow = array_merge($allow, array('GET', 'POST'));
+                if (!in_array($canonicalMethod, ['GET', 'POST'])) {
+                    $allow = array_merge($allow, ['GET', 'POST']);
                     goto not_fos_user_registration_register;
                 }
 
@@ -277,8 +290,8 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             // fos_user_registration_check_email
             if ('/register/check-email' === $pathinfo) {
                 $ret = array (  '_controller' => 'fos_user.registration.controller:checkEmailAction',  '_route' => 'fos_user_registration_check_email',);
-                if (!in_array($canonicalMethod, array('GET'))) {
-                    $allow = array_merge($allow, array('GET'));
+                if (!in_array($canonicalMethod, ['GET'])) {
+                    $allow = array_merge($allow, ['GET']);
                     goto not_fos_user_registration_check_email;
                 }
 
@@ -289,9 +302,9 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             if (0 === strpos($pathinfo, '/register/confirm')) {
                 // fos_user_registration_confirm
                 if (preg_match('#^/register/confirm/(?P<token>[^/]++)$#sD', $pathinfo, $matches)) {
-                    $ret = $this->mergeDefaults(array_replace($matches, array('_route' => 'fos_user_registration_confirm')), array (  '_controller' => 'fos_user.registration.controller:confirmAction',));
-                    if (!in_array($canonicalMethod, array('GET'))) {
-                        $allow = array_merge($allow, array('GET'));
+                    $ret = $this->mergeDefaults(array_replace($matches, ['_route' => 'fos_user_registration_confirm']), array (  '_controller' => 'fos_user.registration.controller:confirmAction',));
+                    if (!in_array($canonicalMethod, ['GET'])) {
+                        $allow = array_merge($allow, ['GET']);
                         goto not_fos_user_registration_confirm;
                     }
 
@@ -302,8 +315,8 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                 // fos_user_registration_confirmed
                 if ('/register/confirmed' === $pathinfo) {
                     $ret = array (  '_controller' => 'fos_user.registration.controller:confirmedAction',  '_route' => 'fos_user_registration_confirmed',);
-                    if (!in_array($canonicalMethod, array('GET'))) {
-                        $allow = array_merge($allow, array('GET'));
+                    if (!in_array($canonicalMethod, ['GET'])) {
+                        $allow = array_merge($allow, ['GET']);
                         goto not_fos_user_registration_confirmed;
                     }
 
@@ -319,8 +332,8 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             // fos_user_resetting_request
             if ('/resetting/request' === $pathinfo) {
                 $ret = array (  '_controller' => 'fos_user.resetting.controller:requestAction',  '_route' => 'fos_user_resetting_request',);
-                if (!in_array($canonicalMethod, array('GET'))) {
-                    $allow = array_merge($allow, array('GET'));
+                if (!in_array($canonicalMethod, ['GET'])) {
+                    $allow = array_merge($allow, ['GET']);
                     goto not_fos_user_resetting_request;
                 }
 
@@ -330,9 +343,9 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
             // fos_user_resetting_reset
             if (0 === strpos($pathinfo, '/resetting/reset') && preg_match('#^/resetting/reset/(?P<token>[^/]++)$#sD', $pathinfo, $matches)) {
-                $ret = $this->mergeDefaults(array_replace($matches, array('_route' => 'fos_user_resetting_reset')), array (  '_controller' => 'fos_user.resetting.controller:resetAction',));
-                if (!in_array($canonicalMethod, array('GET', 'POST'))) {
-                    $allow = array_merge($allow, array('GET', 'POST'));
+                $ret = $this->mergeDefaults(array_replace($matches, ['_route' => 'fos_user_resetting_reset']), array (  '_controller' => 'fos_user.resetting.controller:resetAction',));
+                if (!in_array($canonicalMethod, ['GET', 'POST'])) {
+                    $allow = array_merge($allow, ['GET', 'POST']);
                     goto not_fos_user_resetting_reset;
                 }
 
@@ -343,8 +356,8 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             // fos_user_resetting_send_email
             if ('/resetting/send-email' === $pathinfo) {
                 $ret = array (  '_controller' => 'fos_user.resetting.controller:sendEmailAction',  '_route' => 'fos_user_resetting_send_email',);
-                if (!in_array($requestMethod, array('POST'))) {
-                    $allow = array_merge($allow, array('POST'));
+                if (!in_array($requestMethod, ['POST'])) {
+                    $allow = array_merge($allow, ['POST']);
                     goto not_fos_user_resetting_send_email;
                 }
 
@@ -355,8 +368,8 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             // fos_user_resetting_check_email
             if ('/resetting/check-email' === $pathinfo) {
                 $ret = array (  '_controller' => 'fos_user.resetting.controller:checkEmailAction',  '_route' => 'fos_user_resetting_check_email',);
-                if (!in_array($canonicalMethod, array('GET'))) {
-                    $allow = array_merge($allow, array('GET'));
+                if (!in_array($canonicalMethod, ['GET'])) {
+                    $allow = array_merge($allow, ['GET']);
                     goto not_fos_user_resetting_check_email;
                 }
 

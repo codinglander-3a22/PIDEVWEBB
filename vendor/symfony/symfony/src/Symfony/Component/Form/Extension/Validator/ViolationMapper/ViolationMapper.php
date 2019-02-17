@@ -144,7 +144,7 @@ class ViolationMapper implements ViolationMapperInterface
      * @param FormInterface                 $form The form to search
      * @param PropertyPathIteratorInterface $it   The iterator at its current position
      *
-     * @return null|FormInterface The found match or null
+     * @return FormInterface|null The found match or null
      */
     private function matchChild(FormInterface $form, PropertyPathIteratorInterface $it)
     {
@@ -153,7 +153,7 @@ class ViolationMapper implements ViolationMapperInterface
         $foundAtIndex = null;
 
         // Construct mapping rules for the given form
-        $rules = array();
+        $rules = [];
 
         foreach ($form->getConfig()->getOption('error_mapping') as $propertyPath => $targetPath) {
             // Dot rules are considered at the very end
