@@ -214,55 +214,45 @@
                 <!-- Sidebar Menu -->
                 <ul class="sidebar-menu" data-widget="tree">
                     {% block menu_bar %}
-                    <li class="header">HEADER</li>
-                    <!-- Optionally, you can add icons to the links -->
-                    <li><a href="#"><i class="fa fa-link"></i> <span>Index</span></a></li>
-                    <li><a href="#"><i class="fa fa-link"></i> <span>Module1</span></a></li>
-                    <li><a href="#"><i class="fa fa-link"></i> <span>Module 2 </span></a></li>
-                    <li class="treeview">
-                        <a href="#"><i class="fa fa-link"></i> <span>Module 3 </span>
-                            <span class="pull-right-container">
+                        <li class="header">MENU</li>
+                        <!-- Optionally, you can add icons to the links -->
+                        <li><a href="{{ path('admin') }}"><i class="fa fa-link"></i> <span>Index</span></a></li>
+                        <li class="active" ><a href="{{ path('evenement_homepage') }}"><i class="fa fa-link"></i> <span>Gestion des evénements</span></a></li>
+                        <li><a href="{{ path('programme_homepage') }}"><i class="fa fa-link"></i> <span>Gestion des programmes </span></a></li>
+                        <li class="treeview">
+                            <a href="#"><i class="fa fa-link"></i> <span>Gestion des Salles <br> et  Matériels</span>
+                                <span class="pull-right-container">
                                 <i class="fa fa-angle-left pull-right"></i>
                             </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="#">Link in level 2</a></li>
-                            <li><a href="#">Link in level 2</a></li>
-                        </ul>
-                    </li>
-                    <li class="treeview">
-                        <a href="#"><i class="fa fa-link"></i> <span>Module 4 </span>
-                            <span class="pull-right-container">
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="{{ path('salle_homepage') }}">Gestion des Salles</a></li>
+                                <li><a href="{{ path('matriel_homepage') }}">Gestion des Matériels</a></li>
+                            </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#"><i class="fa fa-link"></i> <span>Gestion des actualités <br>et publicités </span>
+                                <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="#">Link in level 2</a></li>
-                            <li><a href="#">Link in level 2</a></li>
-                        </ul>
-                    </li>
-                    <li class="treeview">
-                        <a href="#"><i class="fa fa-link"></i> <span>Module 5 </span>
-                            <span class="pull-right-container">
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="#">Gestion des actualités</a></li>
+                                <li><a href="#">Gestion des publicités</a></li>
+                            </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#"><i class="fa fa-link"></i> <span>Gestion des planning<br> et ventes</span>
+                                <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="#">Link in level 2</a></li>
-                            <li><a href="#">Link in level 2</a></li>
-                        </ul>
-                    </li>
-                    <li class="treeview">
-                        <a href="#"><i class="fa fa-link"></i> <span>Module 6 </span>
-                            <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="#">Link in level 2</a></li>
-                            <li><a href="#">Link in level 2</a></li>
-                        </ul>
-                    </li>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="#">Link in level 2</a></li>
+                                <li><a href="#">Link in level 2</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="{{ path('forum_homepage') }}"><i class="fa fa-link"></i><span>Forum </span></a></li>
                     {% endblock %}
                 </ul>
 
@@ -288,7 +278,7 @@
 
         <footer class="main-footer">
             {% block footer %}
-            <strong>Copyright &copy; 2016 <a href="#">Company</a>.</strong> All rights reserved.
+            <strong>Copyright &copy; 2019<a href="#">Company</a>.</strong> All rights reserved.
             {% endblock %}
         </footer>
 
